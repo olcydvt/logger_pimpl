@@ -1,0 +1,89 @@
+{
+    "version": 4,
+    "configurePresets": [
+        {
+            "name": "debug-macos-arm64",
+            "displayName": "Debug (MacOS; Apple Clang; arm64)",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "1",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/${presetName}",
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/contrib/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_TARGET_TRIPLET": "arm64-osx"
+            }        
+        },
+        {
+            "name": "debug-macos-clang14-arm64",
+            "displayName": "Debug (MacOS; Brew Clang 14; arm64)",
+            "binaryDir": "${sourceDir}/build",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "1",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/${presetName}",
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/contrib/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/tools/triplets",
+                "VCPKG_TARGET_TRIPLET": "arm64-osx-static",
+                "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/tools/toolchains/macos-brew-clang14.cmake"
+            }        
+        },
+        {
+            "name": "debug-macos-clang17-arm64",
+            "displayName": "Debug (MacOS; Brew Clang 17; arm64)",
+            "binaryDir": "${sourceDir}/build",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "1",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/${presetName}",
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/contrib/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/tools/triplets",
+                "VCPKG_TARGET_TRIPLET": "arm64-osx-static",
+                "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/tools/toolchains/macos-brew-clang17.cmake"
+            }
+        },
+        {
+            "name": "debug-windows-x64",
+            "displayName": "Debug (Windows; MSVC; x64)",
+            "binaryDir": "${sourceDir}/build/debug",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "1",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/${presetName}",
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/contrib/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_TARGET_TRIPLET": "x64-linux-dynamic"
+            }
+        },
+        {
+            "name": "debug-ubuntu",
+            "displayName": "Debug (Linux; gcc; x64)",
+            "binaryDir": "${sourceDir}/build/cmake-build-debug-ubuntu",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "1",
+                "CMAKE_C_COMPILER": "/usr/bin/gcc",
+                "CMAKE_CXX_COMPILER": "/usr/bin/g++-14",
+                "CMAKE_MAKE_PROGRAM": "/usr/bin/ninja",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/${presetName}",
+                "CMAKE_TOOLCHAIN_FILE": "/mnt/c/aegeanlabs/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_TARGET_TRIPLET": "x64-linux"
+            }
+        },
+        {
+            "name": "release-windows-x64",
+            "displayName": "Release (Windows; MSVC; x64)",
+            "binaryDir": "${sourceDir}/build/release",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "1",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/${presetName}",
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/contrib/vcpkg/scripts/buildsystems/vcpkg.cmake",
+                "VCPKG_TARGET_TRIPLET": "x64-windows-static-md"
+            }
+        }
+    ]
+} 
